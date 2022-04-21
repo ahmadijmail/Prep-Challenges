@@ -22,8 +22,10 @@
 
 const objLat = (obj) => {
     
-    let sol=`my name is ${obj.firstName} ${obj.lastName} I am ${obj.age} YO, and I love ${obj.hobby}.`;
-    return sol;
+    let firstName = obj.firstName.charAt(0).toUpperCase() + obj.firstName.slice(1);
+    let lastName = obj.lastName.charAt(0).toUpperCase() + obj.lastName.slice(1);
+    let fullname = `my name is ${firstName} ${lastName} I am ${obj.age} YO, and I love ${obj.hobby}.`
+    return fullname;
 };
 // -------------------------------------------------------------------------------------------------------
 
@@ -87,7 +89,15 @@ const objLat = (obj) => {
 //  2- If one of the names is null don`t add it to the full name
 
 const cvFormatter = (arr) => {
-    // write your code here
+    let array = [];
+    for (let i = 0; i < arr.length; i++) {
+        const fullname = arr[i];
+        if (fullname.lastName === null && fullname.yearsOfExperience > 1) {
+            array.push({ fullName: `${fullname.firstName}`, tech: `${fullname.tech}` }); }
+         else if (fullname.yearsOfExperience > 1) {
+            array.push({ fullName: `${fullname.firstName} ${fullname.lastName}`, tech: `${fullname.tech}` }); } 
+         else continue;
+    } return array;
 };
 // -------------------------------------------------------------------------------------------------------
 
